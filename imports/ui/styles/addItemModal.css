@@ -1,0 +1,166 @@
+.item-list-modal {
+    display: flex;
+    margin: auto;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    background-color: rgba(235, 235, 235, 0.95);
+    border-color: rgba(0,0,0,0.4);
+    border-style:solid;
+
+    #item-list-modal-header{
+        display: flex;
+        margin: 10px;
+        align-self: center;
+        align-items: center;
+        flex-direction: column;
+        input{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+
+    #item-list-container{
+
+        #item-list-li{
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+            align-items:center;
+            align-content:center;
+        }
+
+        background-color: rgba(255,255,255, 0.95);
+        border: 1px solid;
+        font-size: 1.2em;
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 1vh;
+        ul{
+            display: flex;
+            height: 40vh;
+            flex-direction: column;
+            user-select: none;
+            list-style-type: none;
+            box-sizing: content-box;
+            padding: 0;
+            margin: 0 10px 0 10px;
+        }
+        li{
+            margin: 15px 0 15px 0;
+            border: 1px solid black;
+            display: block;
+            text-align: left;
+            padding:15px 10px 15px 10px;
+            justify-content: space-between;
+            
+        }
+        input{
+            display:block;
+            -ms-transform: scale(3); /* IE */
+            -moz-transform: scale(3); /* FF */
+            -webkit-transform: scale(3); /* Safari and Chrome */
+            -o-transform: scale(3); /* Opera */
+            transform: scale(3);
+            cursor: pointer;
+            margin-right: 25px;
+        }
+        input[type="checkbox"]:checked{
+            background-color: green;
+            accent-color: green;
+            opacity: 1;
+        }
+        input[type="checkbox"]:hover{
+            background-color: green;
+            opacity: 1;
+            accent-color: green;
+        }
+        input[type="checkbox"]:before{
+            background-color: green;
+            opacity: 1;
+            accent-color: green;
+        }
+    }
+    #make-reservation-button{
+        display: flex;
+        align-self: center;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #item-list-add-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        #item-list-modal-container{
+            width: 90vw;
+            height: auto;
+        }
+    }
+
+    #item-list-modal-container{
+        width: 49vw;
+        height: 30vh;
+    }
+
+    .item-list-modal{
+        width: 90vw;
+        height: auto;
+    }
+    #item-list-container{
+        width: 60vw;
+        height: auto;
+        li{
+            width:30vw;
+        }
+    }
+    
+}
+@media only screen and (min-width: 600px) {
+
+    #item-list-add-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        #item-list-modal-container{
+            width: 350px;
+            height: auto;
+        }
+    }
+
+    .item-list-modal{
+        width: 400px;
+        height: 650px;
+    }
+    #item-list-container{
+        width: 300px;
+        height: 400px;
+        li{
+            width:150px;
+        }
+    }
+    #item-list-modal-container{
+        width: 250px;
+        height: 250px;
+    }
+}

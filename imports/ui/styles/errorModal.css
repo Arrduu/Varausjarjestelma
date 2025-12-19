@@ -1,0 +1,53 @@
+.error-modal{
+    margin: auto;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+#error-modal-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(235, 235, 235, 0.95);
+    border-radius: 15px;
+    
+}
+
+#error-modal-container h1{
+    color: rgb(0, 0, 0);
+    margin: auto;
+
+}
+
+#error-modal-container button{
+    margin:auto;
+    width: 100px;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .error-modal, #error-modal-container{
+        width: 80vw;
+        height: 40vw;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .error-modal, #error-modal-container{
+        width: 300px;
+        height: 150px;
+    }
+}

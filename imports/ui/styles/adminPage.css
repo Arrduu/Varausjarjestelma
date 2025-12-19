@@ -1,0 +1,110 @@
+#adminpage-container{
+    align-self: center;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#logout-button{
+    align-self: flex-end;
+}
+
+#adminpage-buttons{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    button{
+        align-self: center;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+}
+
+#item-list-reservation{
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+#reservations-list-container{
+    margin: 20px 1px 0 1px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black
+}
+
+@media only screen and (min-width: 800px) {
+    
+    #reservations-list-container, #item-list-reservation{
+        width:350px;
+    }
+
+    #adminpage-buttons button{
+        width: 300px;
+    } 
+    #adminpage-container{
+        width: 800px;
+        align-self: center;
+    }
+    #grid{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #row1{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    #row2{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    #row3{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media only screen and (max-width: 800px) {
+
+    #reservations-list-container, #item-list-reservation{
+        width:90vw;
+        border: 0;
+    }
+
+    #adminpage-buttons button{
+        width: 50vw;
+    }
+    #grid{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #row1{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #row2{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #row3{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

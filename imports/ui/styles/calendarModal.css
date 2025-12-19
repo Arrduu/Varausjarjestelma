@@ -1,0 +1,28 @@
+.item-list-calendar-modal{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+    background-color: rgba(235, 235, 235, 0.95);
+    border-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+    border-style:solid;
+}
+
+@media only screen and (max-width: 600px) {
+    .item-list-calendar-modal{
+        width: 50vw;
+        height: 50vh;
+    }
+
+}
+@media only screen and (min-width: 600px) {
+    .item-list-calendar-modal{
+        width: 250px;
+        height: 250px;
+    }
+
+}

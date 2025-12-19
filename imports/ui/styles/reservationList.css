@@ -1,0 +1,98 @@
+#reservations-list{
+    font-size: 1.2em;
+    align-self: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-style:solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 15px;
+    ul{
+        display: flex;
+        flex-direction: column;
+        user-select: none;
+        list-style-type: none;
+        box-sizing: content-box;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    li{
+        margin: 1vh 0 1vh 0;
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        padding:0 10px 0 10px;
+        justify-content: space-between;
+        label{
+            border: 1px solid black;
+            padding: 5px;
+            width: 150px;
+            overflow-x: scroll;
+        }
+    }
+}
+
+.reservations-list-modal{
+    h1{
+        text-align: center;
+        width: 200px;
+        overflow-x: scroll;
+    }
+    button{
+        margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
+    display: flex;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    margin-top: 15vh;
+    background-color: rgba(235, 235, 235, 0.95);
+    border-color: rgba(0,0,0,0.4);
+    border-radius: 0%;
+    border-style:solid;
+}
+
+@media only screen and (min-width: 600px) {
+
+    #reservations-list-container{
+        width: 300px;
+    }
+
+    #reservations-list {
+        align-self: center;
+        width: 300px;
+        height: 300px;
+        border-radius: 0;
+    }
+    .reservations-list-modal{
+        width: 400px;
+        height: auto ;
+        #item-list{
+            width: 300px;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    #reservations-list-container{
+        width: 80vw;
+    }
+
+    #reservations-list{
+        align-self: center;
+        width: 80vw;
+        height: 80vw;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+    #reservations-list::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+    .reservations-list-modal{
+        width: 90vw;
+        height: auto ;
+    }
+}

@@ -1,0 +1,100 @@
+.createItemModal #error{
+    position: relative;
+    color: rgba(0,0,0,1);
+    text-align: center;
+    align-self: flex-start;
+    height: 2vh;
+    width: 25vw;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.createItemModal form #item-name{
+    text-align: center;
+    align-self: center;
+    margin-bottom: 1vh;
+    height: 2vh;
+}
+.createItemModal form #categories{
+    position: relative;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 1vh;
+    height: 3vh;
+}
+
+.createItemModal form #item-manUrl{
+    text-align: center;
+    align-self: center;
+    margin-bottom: 1vh;
+    height: 2vh;
+}
+
+.createItemModal form #item-info{
+    text-align: center;
+    align-self: center;
+    margin-bottom: 1vh;
+    resize: none;
+    height: 6vh;
+}
+
+.createItemModal form #create-item-submit-button{
+    margin-top: 1vh;
+    height: 3vh;
+    align-self: center;
+}
+.createItemModal form{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.createItemModal{
+    display: flex;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    margin-top: 25vh;
+    background-color: rgba(200,200,200,0.9);
+    border-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+    border-style:solid;
+    height: 30vw;
+}
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .createItemModal{
+        width: 80vw;
+        height: auto;
+        form{
+            margin: 2vh 0 2vh 0;
+        }
+        form #item-name,form #categories,form #item-manUrl,form #item-info,#error{
+            width: 50vw;
+        }
+    }
+}
+@media only screen and (min-width: 600px) {
+    .createItemModal{
+        width: 300px;
+        height: auto;
+        form{
+            margin: 5vh 0 5vh 0;
+        }
+        form #item-name,form #categories,form #item-manUrl,form #item-info,form label,form #create-item-submit-button,#error{
+            width: 250px;
+        }
+    }
+}

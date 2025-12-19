@@ -1,0 +1,190 @@
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base'
+import { Roles } from 'meteor/alanning:roles'; //https://github.com/Meteor-Community-Packages/meteor-roles
+import { itemsCollection } from '../imports/api/items';
+import { reservationsCollection } from '../imports/api/reservations';
+
+//-------TODO--------
+
+
+
+async function insertItem({ name,category,reserveDate,manUrl, status, user,reservation, available }) {
+  await itemsCollection.insertAsync({ name, category,reserveDate, manUrl, status, user,reservation, available });
+}
+
+async function makeReservation({ name,reserveDate,user,items}) {
+  await reservationsCollection.insertAsync({ name,reserveDate,user, items});
+}
+
+async function returnReservations(ResArray,userId){
+  for(let i=0;i!=ResArray.length;i++){
+    await reservationsCollection.removeAsync({name:ResArray[i], user:userId})
+  } 
+}
+
+async function returnItemFromReservation(resId, itemsArr, userId){ 
+  let res = await reservationsCollection.findOneAsync(resId,{user:userId})
+  itemsArr.map((item)=>item===res.items.map((resItem)=>resItem===item?(res.items.splice(res.items.indexOf(resItem),1)):(null)))
+  await reservationsCollection.updateAsync(resId,{$set:{items:res.items}})
+}
+
+async function returnReservationsAdmin(ResArray){
+  for(let i=0;i!=ResArray.length;i++){
+    await reservationsCollection.removeAsync({name:ResArray[i]})
+  }
+}
+
+async function returnItemFromReservationAdmin(resId, itemsArr){
+  let res = await reservationsCollection.findOneAsync(resId)
+  itemsArr.map((item)=>item===res.items.map((resItem)=>resItem===item?(res.items.splice(res.items.indexOf(resItem),1)):(null)))
+  await reservationsCollection.updateAsync(resId,{$set:{items:res.items}})
+}
+  
+   
+// updateAsync(itemId, {$set:{user:""}})  res.items.splice(res.items.indexOf(resItem),1)
+
+Meteor.startup(async () => {
+
+  // Add test item to items in db if db_len=0
+  if (await itemsCollection.find().countAsync() === 0) {
+    await insertItem({
+      name:"test",
+      category:"category",
+      reserveDate:new Date(), 
+      manUrl:"www.google.fi",
+      status:"Reserved",  
+      user:"",
+      reservation:"",
+      available:true 
+    });
+
+  }
+
+  if(){
+    Accounts.createUser({username:'admin',password:'Tonninseteli1000'})
+  }
+
+  if (await reservationsCollection.find().countAsync() === 0) {
+    await makeReservation({
+      name:"test1",
+      reserveDate:new Date(),
+      user:"pMnPNRpBeCJT7jrQe",
+      items:[],
+    });
+    await makeReservation({
+      name:"test2",
+      reserveDate:new Date(),
+      user:"pMnPNRpBeCJT7jrQe",
+      items:["zctPfNmXLJkerTQem","zpgXaEAYKqPLoYYtj","93JX5kPT2Lt9Ermb2"],
+    });
+    await makeReservation({
+      name:"test3",
+      reserveDate:new Date(),
+      user:"X6ge3DmTiPrhhGtcY",
+      items:[],
+    });
+
+  }
+  
+  // Accounts config
+  Accounts.config({loginExpiration:6000000}) //180s token exp time
+
+  // Add roles to database
+  if(Meteor.roles.find().countAsync()===0){
+    Roles.createRole('user');
+    Roles.createRole('admin');
+  }
+
+  Meteor.publish(null, function () {
+    if (this.userId) {
+      return Meteor.roleAssignment.find({ 'user._id': this.userId });
+    } else {
+      this.ready()
+    }
+  })
+
+  Meteor.publish('items',function(){
+    if(Roles.userIsInRole(this.userId,'user')||Roles.userIsInRole(this.userId,'admin')){
+      return itemsCollection.find();
+    }else{
+      this.ready();
+    }
+  })
+
+  Meteor.publish('reservations',function(){
+    if(Roles.userIsInRole(this.userId,'user')||Roles.userIsInRole(this.userId,'admin')){
+      return reservationsCollection.find();
+    }else{
+      this.ready();
+    }
+  })
+
+  Meteor.methods({
+    'createUserServer'(userName,userPassword){
+      try{
+        const tmp = Accounts.createUser({username:userName,password:userPassword})
+        if(tmp){
+          console.log("User created succesfully")
+        }
+      }
+      catch(err){
+        if(err.isClientSafe){
+          throw new Meteor.Error('Error creating user.',err.reason)
+        }
+      }
+      return true;
+    },
+    'setUserRole'(userName,userRole){
+      console.log(`Setting user ${userName} to role ${userRole}`)
+      try{
+        const userId = Accounts.findUserByUsername(userName)._id
+        Roles.addUsersToRoles(userId,userRole)
+      }catch(err){
+        throw new Meteor.Error('Error setting user to role.',err)
+      }
+
+    },
+    'insertItemDB'(name,category,reserveDate,manUrl, status, user,reservation, available){
+      try{      
+        insertItem({name:name,category:category,reserveDate:reserveDate,manUrl:manUrl,status:status,user:user,reservation:reservation,available:available})
+      }catch(err){
+        throw new Meteor.Error('Error creating item.',err)
+      }
+
+    },
+    'returnReservationByName'(ResArray, userId){
+      if(Roles.userIsInRole(userId, 'user')){try{
+        returnReservations(ResArray, userId)
+      }catch(err){
+        throw new Meteor.Error('Error returning reservation', err)
+      }
+    }else{      
+      if(Roles.userIsInRole(userId, 'admin')){try{
+      returnReservationsAdmin(ResArray)
+    }catch(err){
+      throw new Meteor.Error('Error returning reservation', err)
+    }
+  }
+
+    }
+    },
+    'returnItemFromReservartion'(resId,itemsArr,userId){
+      if(Roles.userIsInRole(userId, 'user')){
+        try{
+        returnItemFromReservation(resId, itemsArr, userId) 
+      }catch(err){
+        throw new Meteor.Error('Error returning item', err)
+      }
+      }else{
+        if(Roles.userIsInRole(userId,'admin')){
+          try{
+            returnItemFromReservationAdmin(resId, itemsArr) 
+          }catch(err){
+            throw new Meteor.Error('Error returning item', err)
+          }
+        }
+      }
+    },
+  })
+});
+

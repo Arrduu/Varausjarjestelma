@@ -1,0 +1,95 @@
+.createUserModal #error{
+    position: relative;
+    color: rgba(0,0,0,1);
+    text-align: center;
+    align-self: flex-start;
+    height: 2vh;
+    width: 25vw;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.createUserModal form #createUserName{
+    text-align: center;
+    align-self: center;
+    margin-bottom: 1vh;
+    height: 2vh;
+    width: 20vw;
+}
+.createUserModal form #createUserPass{
+    position: relative;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 1vh;
+    height: 2vh;
+    width: 20vw;
+}
+.createUserModal form select{
+    position: relative;
+    align-self: center;
+    text-align: center;
+    height: 3vh;
+    width: 20vw;
+}
+.createUserModal form #createUserSubmitButton{
+    margin-top: 1vh;
+    height: 3vh;
+    width: 20vw;
+    align-self: center;
+}
+.createUserModal form{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.createUserModal{
+    display: flex;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    margin-top: 25vh;
+    background-color: rgba(200,200,200,0.9);
+    border-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+    border-style:solid;
+    width: 35vw;
+    height: 30vw;
+}
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .createUserModal{
+        width: 80vw;
+        height: auto;
+        form{
+            margin: 2vh 0 2vh 0;
+        }
+        form #createUserSubmitButton,form #createUserName,form #createUserPass,form select,#error{
+            width: 50vw;
+        }
+    }
+}
+@media only screen and (min-width: 600px) {
+    .createUserModal{
+        width: 300px;
+        height: auto;
+        form{
+            margin: 5vh 0 5vh 0;
+        }
+        form #createUserSubmitButton,form #createUserName,form #createUserPass,form select,#error{
+            width: 250px;
+        }
+    }
+}

@@ -1,0 +1,135 @@
+[id$="Checkbox"]{
+    -ms-transform: scale(3); /* IE */
+    -moz-transform: scale(3); /* FF */
+    -webkit-transform: scale(3); /* Safari and Chrome */
+    -o-transform: scale(3); /* Opera */
+    transform: scale(3);
+    cursor: pointer;
+}
+input[type="checkbox"]:checked{
+    background-color: green;
+    accent-color: green;
+    opacity: 1;
+}
+input[type="checkbox"]:hover{
+    background-color: green;
+    opacity: 1;
+    accent-color: green;
+}
+input[type="checkbox"]:before{
+    background-color: green;
+    opacity: 1;
+    accent-color: green;
+}
+.react-calendar{
+    background-color: #ffffff;
+}
+
+#item-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#item-list-edit-li{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#item-list-modal-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 40vh;
+    border: 1px solid black;
+    background-color: #ffffff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#item-list-modal-container li{
+    margin: 15px 35px 15px 0;
+    border: 1px solid black;
+    display: block;
+    text-align: left;
+    padding:15px 10px 15px 10px;
+    justify-content: space-between;
+}
+
+#item-list-modal-container ul{
+    padding:0;
+    margin: 0 10px 0 10px;
+}
+
+#item-list-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.react-calendar{
+    margin: 1vh 1vw 1vh 1vw;
+}
+
+.react-calendar__tile__reserved{
+    background: rgba(255, 0, 0, 0.5) !important;
+}
+
+.item-list-modal-maintenance{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    background-color: rgba(235, 235, 235, 0.95);
+    border-color: rgba(0,0,0,0.4);
+    border-style:solid;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #item-list-modal-container{
+        width: 49vw;
+        height: 30vh;
+    }
+    #item-list-container{
+        width: 45vw;
+    }
+    .react-calendar{
+        width: 65vw;
+    }
+    #item-list-edit-li li{
+        width: 22vw;
+    }
+    .item-list-modal-maintenance{
+        width: 45vw;
+        height: 45vh;
+    }
+}
+@media only screen and (min-width: 600px) {
+    #item-list-modal-container{
+        width: 250px;
+        height: 250px;
+    }
+    #item-list-container{
+        width: 220px;
+    }
+    #item-list-edit-li li{
+        width: 160px;
+    }
+    .react-calendar{
+        width: 300px; 
+    }
+    .item-list-modal-maintenance{
+        width: 250px;
+        height: 250px;
+    }
+}

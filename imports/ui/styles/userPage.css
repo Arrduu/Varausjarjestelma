@@ -1,0 +1,62 @@
+#userpage-container{
+    align-self: center;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+#userpage-buttons{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    button{
+        align-self: center;
+        width: 30vw;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    #userpage-container{
+        width: 560px;
+    }
+
+    #userpage-buttons button{
+        width: 300px;
+    } 
+   
+    #logout-button{
+        align-self: flex-end;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #userpage-buttons button{
+        width: 60vw;
+        height: 50px;
+        font-size: large;
+    }
+
+    #logout-button{
+        align-self: flex-end;
+        margin-bottom: 5vh;
+    }
+}
