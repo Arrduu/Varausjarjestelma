@@ -50,7 +50,7 @@ export const App = () => {
   return (
     <div id='container' style={styles}>
       <div id='header'>
-        <img style={styles} id='logo' src='/images/SMLogo.png' alt='StudioMuuntamoLogo' />
+        {/* LOGO IMAGE HERE <img style={styles} id='logo' src='' alt='' /> */}
         <button id='logout-button' styles={styles} onClick={onClick}>Logout</button>
       </div>
 

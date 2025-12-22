@@ -1,5 +1,5 @@
 {
-  "name": "StudioMuuntamo",
+  "name": "Varausjarjestelma",
   "private": true,
   "scripts": {
     "start": "meteor run",
