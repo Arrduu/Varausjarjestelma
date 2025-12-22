@@ -43,7 +43,7 @@
  */
 
 import React,{startTransition, Suspense} from "react";
-import {useFind, useSubscribe, useTracker} from 'meteor/react-meteor-data/suspense';
+import {useSubscribe, useTracker} from 'meteor/react-meteor-data/suspense';
 import Modal from 'react-modal';
 import styles from '../styles/reservationList.css';
 import {ItemList} from './ItemList';

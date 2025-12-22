@@ -24,6 +24,9 @@ import styles from './styles/creds'
 
 export const Creds = () => {
 
+    const userName = React.useRef('')
+    const userPass = React.useRef('')
+
     const onError=(e)=>{
         if(e){
             console.log(e.reason)
@@ -32,15 +35,15 @@ export const Creds = () => {
 
     const onSubmit=(e)=>{
         e.preventDefault()
-        Meteor.loginWithPassword(e.target.user.value,e.target.pass.value,onError)
+        Meteor.loginWithPassword(userName.current,userPass.current,onError)
         if(Accounts.loggingIn()){console.log("Logging in....")}
     }
 
     return(
     <div id='Creds' style={styles}>
         <form onSubmit={onSubmit} style={styles}>
-            <input id='user' type="text"placeholder='User' required/>
-            <input id='pass' type="password"placeholder='Password' required/>
+            <input onChange={e => userName.current = e.target.value} id='user' type="text"placeholder='User' required/>
+            <input onChange={e => userPass.current = e.target.value} id='pass' type="password"placeholder='Password' required/>
             <button id='submitButton' type='submit'>Login</button>
         </form>
     </div>

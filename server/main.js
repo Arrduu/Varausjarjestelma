@@ -192,7 +192,7 @@ Meteor.startup(async () => {
   })
 
   Meteor.publish("allUserData", function () {
-    if(this.userId){
+    if(this.userId&&Roles.userIsInRoleAsync(this.userId, 'admin')){
       return Meteor.users.find({}, {fields: {'_id': 1, 'username':1}});
     }
   })
